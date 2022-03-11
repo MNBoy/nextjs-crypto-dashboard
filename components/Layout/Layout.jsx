@@ -7,7 +7,7 @@ export default function Layout(props) {
   const [IsDesktop, setIsDesktop] = useState(false);
 
   const handleResize = () => {
-    if (window.innerWidth >= 768) {
+    if (window.innerWidth >= 1024) {
       setIsDesktop(true);
     } else {
       setIsDesktop(false);
@@ -26,12 +26,12 @@ export default function Layout(props) {
         <section className='container mx-auto max-w-screen-2xl grid grid-cols-12 h-screen grid-rows-[100px_minmax(500px,_1fr)]'>
           <SideBar />
           <Navbar />
-          <main className='col-span-11 p-4'>{props.children}</main>
+          <main className='col-span-11'>{props.children}</main>
         </section>
       )}
       {!IsDesktop && (
-        <div className='w-screen flex justify-center items-center h-screen text-white font-semibold text-xl'>
-          <h1>Please open site with desktop!</h1>
+        <div className='flex items-center justify-center w-screen h-screen text-xl font-semibold text-white'>
+          <h1>Please open with desktop!</h1>
         </div>
       )}
     </Fragment>

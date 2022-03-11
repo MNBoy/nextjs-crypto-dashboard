@@ -5,6 +5,7 @@ module.exports = {
       colors: {
         blueTheme: '#2A4DFF',
         slateTheme: '#191B2A',
+        bgColor: '#000212',
       },
     },
   },
