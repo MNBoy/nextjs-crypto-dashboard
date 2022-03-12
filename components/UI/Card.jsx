@@ -2,11 +2,11 @@
 const Card = (props) => {
   return (
     <div className='relative flex items-center justify-center w-56 overflow-hidden rounded-2xl shrink-0'>
-      <img className='object-cover w-full h-full' src={props.image} alt={props.name} />
+      <img className='object-cover w-full h-full' draggable='false' src={props.image} alt={props.name} />
       <div className='absolute bottom-0 left-0 flex justify-between w-full h-12 px-4 py-2 backdrop-blur'>
         <div className='flex flex-col justify-center'>
           <span className='text-xs opacity-50'>#{props.number}</span>
-          <span className='text-xs font-semibold capitalize xl:text-sm'>
+          <span className='text-xs font-semibold capitalize cursor-pointer xl:text-sm hover:underline'>
             {props.name.slice(0, 15)}
             {props.name.length > 15 && '...'}
           </span>
