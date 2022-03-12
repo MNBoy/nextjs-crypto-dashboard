@@ -10,3 +10,17 @@ body {
   font-family: 'Poppins', sans-serif;
   color: #fff;
 }
+
+/* Scroll */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background-color: #242533;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #51535d;
+  border-radius: 10px;
+}

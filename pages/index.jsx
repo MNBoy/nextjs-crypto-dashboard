@@ -1,4 +1,5 @@
 import SummaryAssets from '../components/Assets/SummaryAssets';
+import SummaryNfts from '../components/Nfts/SummaryNfts';
 
 export default function Home() {
   const inComing = {
@@ -39,7 +40,9 @@ export default function Home() {
         <div className='p-2 border-b border-gray-900 h-2/5'>
           <SummaryAssets inComing={inComing} outGoing={outGoing} balance={balance} />
         </div>
-        <div className='p-2 h-3/5'>NFT Collection</div>
+        <div className='h-3/5'>
+          <SummaryNfts />
+        </div>
       </div>
     </div>
   );

@@ -15,8 +15,8 @@ export default function Navbar() {
   };
 
   return (
-    <nav className='border-b border-gray-900 col-span-11 flex items-center px-12 justify-between'>
-      <div className='flex gap-x-2 items-center w-full'>
+    <nav className='flex items-center justify-between col-span-11 px-12 border-b border-gray-900'>
+      <div className='flex items-center w-full gap-x-2'>
         <span>
           <svg width='25' height='25' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'>
             <path
@@ -30,13 +30,13 @@ export default function Navbar() {
           </svg>
         </span>
         <input
-          className='bg-transparent border-0 outline-none text-sm font-light w-full'
+          className='w-full text-sm font-light bg-transparent border-0 outline-none'
           type='text'
           placeholder='Search something in tokens, wallet, transactions...'
         />
       </div>
-      <div className='gap-x-4 items-center hidden lg:flex'>
-        <div className='bg-slateTheme flex gap-x-4 items-center rounded-full p-2 pr-4 cursor-pointer'>
+      <div className='items-center hidden gap-x-4 lg:flex'>
+        <div className='flex items-center p-2 pr-4 rounded-full cursor-pointer bg-slateTheme gap-x-4'>
           <img
             className='w-10 h-10 rounded-full'
             src='https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1013.jpg'
@@ -55,7 +55,7 @@ export default function Navbar() {
             </svg>
           </span>
         </div>
-        <div className='bg-slateTheme flex items-center justify-center w-15 h-15 rounded-full p-3 relative cursor-pointer'>
+        <div className='relative flex items-center justify-center p-3 rounded-full cursor-pointer bg-slateTheme w-15 h-15'>
           <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
             <path
               d='M17 20.5H7C4 20.5 2 19 2 15.5V8.5C2 5 4 3.5 7 3.5H17C20 3.5 22 5 22 8.5V15.5C22 19 20 20.5 17 20.5Z'
@@ -74,11 +74,11 @@ export default function Navbar() {
               strokeLinejoin='round'
             />
           </svg>
-          <span className='text-xs bg-blueTheme p-2 rounded-full absolute w-5 h-5 flex items-center justify-center -top-1 -right-1'>
+          <span className='absolute flex items-center justify-center w-5 h-5 p-2 text-xs rounded-full bg-blueTheme -top-1 -right-1'>
             14
           </span>
         </div>
-        <div className='bg-slateTheme flex items-center justify-center w-15 h-15 rounded-full p-3 relative cursor-pointer'>
+        <div className='relative flex items-center justify-center p-3 rounded-full cursor-pointer bg-slateTheme w-15 h-15'>
           <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
             <path
               d='M12.0196 2.91016C8.7096 2.91016 6.0196 5.60016 6.0196 8.91016V11.8002C6.0196 12.4102 5.7596 13.3402 5.4496 13.8602L4.2996 15.7702C3.5896 16.9502 4.0796 18.2602 5.3796 18.7002C9.6896 20.1402 14.3396 20.1402 18.6496 18.7002C19.8596 18.3002 20.3896 16.8702 19.7296 15.7702L18.5796 13.8602C18.2796 13.3402 18.0196 12.4102 18.0196 11.8002V8.91016C18.0196 5.61016 15.3196 2.91016 12.0196 2.91016Z'
@@ -102,13 +102,13 @@ export default function Navbar() {
               strokeMiterlimit='10'
             />
           </svg>
-          <span className='text-xs bg-blueTheme p-2 rounded-full absolute w-5 h-5 flex items-center justify-center -top-1 -right-1'>
+          <span className='absolute flex items-center justify-center w-5 h-5 p-2 text-xs rounded-full bg-blueTheme -top-1 -right-1'>
             2
           </span>
         </div>
         <div
           onClick={handleScreen}
-          className='bg-slateTheme flex items-center justify-center w-15 h-15 rounded-full p-3 relative cursor-pointer'
+          className='relative flex items-center justify-center p-3 rounded-full cursor-pointer bg-slateTheme w-15 h-15'
         >
           {!fullScreen && (
             <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
