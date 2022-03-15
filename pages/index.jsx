@@ -18,11 +18,11 @@ export default function Home() {
   };
 
   return (
-    <div className='flex h-full'>
-      <div className='flex flex-col w-4/6'>
+    <div className='flex flex-col h-full lg:flex-row'>
+      <div className='flex flex-col w-full lg:w-4/6'>
         <div className='relative p-2 border-b border-r border-gray-900 h-3/5'>
           Charts
-          <div className='absolute flex items-center justify-center w-48 py-4 -translate-x-1/2 rounded-full cursor-pointer -bottom-6 left-1/2 gap-x-4 bg-blueTheme'>
+          <div className='absolute items-center justify-center hidden w-48 py-4 -translate-x-1/2 rounded-full cursor-pointer lg:flex -bottom-6 left-1/2 gap-x-4 bg-blueTheme'>
             <button className='text-sm'>See More Details</button>
             <span>
               <svg width='15' height='15' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
@@ -34,9 +34,9 @@ export default function Home() {
             </span>
           </div>
         </div>
-        <div className='p-2 border-r border-gray-900 h-2/5'>Coins</div>
+        <div className='p-2 border-b border-r border-gray-900 lg:border-b-0 h-2/5'>Coins</div>
       </div>
-      <div className='flex flex-col w-2/6'>
+      <div className='flex flex-col w-full lg:w-2/6'>
         <div className='p-2 border-b border-gray-900 h-2/5'>
           <SummaryAssets inComing={inComing} outGoing={outGoing} balance={balance} />
         </div>

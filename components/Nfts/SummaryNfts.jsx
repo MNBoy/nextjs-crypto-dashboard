@@ -31,12 +31,12 @@ const SummaryNfts = (props) => {
 
   return (
     <div className='flex flex-col h-full'>
-      <header className='flex justify-between w-full p-6'>
+      <header className='flex justify-between w-full p-3 lg:py-6'>
         <div className='flex flex-col gap-y-2'>
           <span className='font-medium'>NFT Collections</span>
           <span className='text-xs font-light text-gray-500'>Creator | Artist</span>
         </div>
-        <div className='flex items-center w-auto px-6 py-4 border-[.1px] border-gray-600 rounded-full cursor-pointer justify-evenly bg-slateTheme gap-x-2'>
+        <div className='flex items-center w-auto px-3 lg:px-6 py-2 lg:py-2 border-[.1px] border-gray-600 rounded-full cursor-pointer justify-evenly bg-slateTheme gap-x-2'>
           <span className='text-sm'>EtherNose</span>
           <span>
             <svg width='15' height='15' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
@@ -48,7 +48,7 @@ const SummaryNfts = (props) => {
           </span>
         </div>
       </header>
-      <div className='flex flex-1 w-auto pb-6 pl-6 overflow-x-scroll gap-x-3'>
+      <div className='flex flex-1 w-auto pb-3 pl-3 overflow-x-scroll lg:pb-6 lg:pl-6 gap-x-3'>
         {nfts.map((nft) => {
           return <Card key={nft.id} name={nft.name} number={nft.number} price={nft.price} image={nft.image} />;
         })}

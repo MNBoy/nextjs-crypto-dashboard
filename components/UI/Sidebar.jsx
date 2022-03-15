@@ -1,9 +1,12 @@
 /* eslint-disable @next/next/link-passhref */
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
-export default function SideBar() {
+export default function SideBar(props) {
+  const [collapse, setCollapse] = useState(true);
   const router = useRouter();
+  const sidebarClasses = props.className;
   const items = {
     home: router.pathname === '/',
     chart: router.pathname === '/chart',
@@ -12,8 +15,16 @@ export default function SideBar() {
     settings: router.pathname === '/settings',
   };
 
+  const toggleCollapse = () => {
+    setCollapse(!collapse);
+  };
+
   return (
-    <aside className='flex flex-col row-span-2 py-6 border-r border-gray-900'>
+    <aside
+      className={`${sidebarClasses} flex-col row-span-2 py-6 border-r border-gray-900 bg-bgColor z-10 h-full transition-all duration-300 ${
+        collapse ? '-left-[69px]' : 'left-0'
+      }`}
+    >
       <div className='flex justify-center mb-8'>
         <svg width='55' height='55' viewBox='0 0 55 55' fill='none' xmlns='http://www.w3.org/2000/svg'>
           <path
@@ -30,9 +41,9 @@ export default function SideBar() {
           />
         </svg>
       </div>
-      <div className='flex flex-col'>
+      <div className='relative flex flex-col'>
         <Link href='/'>
-          <div className='flex justify-center py-8 cursor-pointer group'>
+          <div className='flex justify-center py-4 cursor-pointer lg:py-8 group'>
             <div className='relative flex justify-center w-full'>
               <div
                 className={
@@ -55,7 +66,7 @@ export default function SideBar() {
           </div>
         </Link>
         <Link href='/chart'>
-          <div className='flex justify-center py-8 cursor-pointer group'>
+          <div className='flex justify-center py-4 cursor-pointer lg:py-8 group'>
             <div className='relative flex justify-center w-full'>
               <div
                 className={
@@ -100,7 +111,7 @@ export default function SideBar() {
           </div>
         </Link>
         <Link href='/assets'>
-          <div className='flex justify-center py-8 cursor-pointer group'>
+          <div className='flex justify-center py-4 cursor-pointer lg:py-8 group'>
             <div className='relative flex justify-center w-full'>
               <div
                 className={
@@ -147,7 +158,7 @@ export default function SideBar() {
           </div>
         </Link>
         <Link href='/exchange'>
-          <div className='flex justify-center py-8 cursor-pointer group'>
+          <div className='flex justify-center py-4 cursor-pointer lg:py-8 group'>
             <div className='relative flex justify-center w-full'>
               <div
                 className={
@@ -239,7 +250,7 @@ export default function SideBar() {
           </div>
         </Link>
         <Link href='/settings'>
-          <div className='flex justify-center py-8 mb-10 cursor-pointer group'>
+          <div className='flex justify-center py-3 mb-5 cursor-pointer lg:py-8 group'>
             <div className='relative flex justify-center w-full'>
               <div
                 className={
@@ -249,7 +260,7 @@ export default function SideBar() {
               ></div>
               {!items.settings && (
                 <svg
-                  className='mb-2 w-7 h-7 stroke-gray-500'
+                  className='w-8 h-8 mb-2 stroke-gray-500'
                   width='30'
                   height='30'
                   viewBox='0 0 30 30'
@@ -274,7 +285,7 @@ export default function SideBar() {
               )}
               {items.settings && (
                 <svg
-                  className='mb-2 w-7 h-7 fill-white'
+                  className='w-8 h-8 mb-2 fill-white'
                   width='30'
                   height='30'
                   viewBox='0 0 30 30'
@@ -287,7 +298,7 @@ export default function SideBar() {
             </div>
           </div>
         </Link>
-        <div className='flex flex-col items-center py-8 cursor-pointer'>
+        <div className='flex flex-col items-center px-1 py-4 cursor-pointer lg:py-8'>
           <svg
             className='mb-2 fill-gray-500 w-7 h-7'
             viewBox='0 0 30 30'
@@ -298,11 +309,25 @@ export default function SideBar() {
             <path d='M27.5 9.4375C26.9875 9.4375 26.5625 9.0125 26.5625 8.5V3.4375H21.5C20.9875 3.4375 20.5625 3.0125 20.5625 2.5C20.5625 1.9875 20.9875 1.5625 21.5 1.5625H27.5C28.0125 1.5625 28.4375 1.9875 28.4375 2.5V8.5C28.4375 9.0125 28.0125 9.4375 27.5 9.4375Z' />
             <path d='M18.75 28.4375H11.25C4.4625 28.4375 1.5625 25.5375 1.5625 18.75V11.25C1.5625 4.4625 4.4625 1.5625 11.25 1.5625H13.75C14.2625 1.5625 14.6875 1.9875 14.6875 2.5C14.6875 3.0125 14.2625 3.4375 13.75 3.4375H11.25C5.4875 3.4375 3.4375 5.4875 3.4375 11.25V18.75C3.4375 24.5125 5.4875 26.5625 11.25 26.5625H18.75C24.5125 26.5625 26.5625 24.5125 26.5625 18.75V16.25C26.5625 15.7375 26.9875 15.3125 27.5 15.3125C28.0125 15.3125 28.4375 15.7375 28.4375 16.25V18.75C28.4375 25.5375 25.5375 28.4375 18.75 28.4375Z' />
           </svg>
-          <span className='text-xs font-medium text-gray-600'>Version 2.30</span>
+          <span className='text-[10px] font-medium text-gray-600 lg:text-xs'>Version 2.30</span>
           <a href='https://github.com/MNBoy' target='_blank' rel='noreferrer'>
-            <span className='text-xs text-gray-600'>Github</span>
+            <span className='text-[10px] text-gray-600 lg:text-xs'>Github</span>
           </a>
         </div>
+      </div>
+      <div
+        onClick={toggleCollapse}
+        className='absolute flex items-center justify-center w-10 h-10 -translate-y-1/2 rounded-full bg-blueTheme -right-9 top-1/2 lg:hidden'
+      >
+        <span>
+          <svg className='w-8 h-8 fill-white' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'>
+            <path d='M17.6375 22.0125C17.4 22.0125 17.1625 21.925 16.975 21.7375C16.6125 21.375 16.6125 20.775 16.975 20.4125L20.775 16.6125C21.1375 16.25 21.7375 16.25 22.1 16.6125C22.4625 16.975 22.4625 17.575 22.1 17.9375L18.3 21.7375C18.125 21.9125 17.8875 22.0125 17.6375 22.0125Z' />
+            <path d='M21.4373 18.2125H8.5498C8.0373 18.2125 7.6123 17.7875 7.6123 17.275C7.6123 16.7625 8.0373 16.3375 8.5498 16.3375H21.4373C21.9498 16.3375 22.3748 16.7625 22.3748 17.275C22.3748 17.7875 21.9623 18.2125 21.4373 18.2125Z' />
+            <path d='M8.5623 13.6625C8.3248 13.6625 8.0873 13.575 7.8998 13.3875C7.5373 13.025 7.5373 12.425 7.8998 12.0625L11.6998 8.26245C12.0623 7.89995 12.6623 7.89995 13.0248 8.26245C13.3873 8.62495 13.3873 9.22498 13.0248 9.58748L9.2248 13.3875C9.0373 13.575 8.7998 13.6625 8.5623 13.6625Z' />
+            <path d='M21.4373 13.6624H8.5498C8.0373 13.6624 7.6123 13.2374 7.6123 12.7249C7.6123 12.2124 8.0373 11.7874 8.5498 11.7874H21.4373C21.9498 11.7874 22.3748 12.2124 22.3748 12.7249C22.3748 13.2374 21.9623 13.6624 21.4373 13.6624Z' />
+            <path d='M15 28.4375C7.5875 28.4375 1.5625 22.4125 1.5625 15C1.5625 7.5875 7.5875 1.5625 15 1.5625C22.4125 1.5625 28.4375 7.5875 28.4375 15C28.4375 22.4125 22.4125 28.4375 15 28.4375ZM15 3.4375C8.625 3.4375 3.4375 8.625 3.4375 15C3.4375 21.375 8.625 26.5625 15 26.5625C21.375 26.5625 26.5625 21.375 26.5625 15C26.5625 8.625 21.375 3.4375 15 3.4375Z' />
+          </svg>
+        </span>
       </div>
     </aside>
   );

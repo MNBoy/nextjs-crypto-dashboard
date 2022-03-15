@@ -1,8 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from 'react';
 
-export default function Navbar() {
+export default function Navbar(props) {
   const [fullScreen, setFullScreen] = useState(false);
+  const navClasses = props.className;
 
   const handleScreen = () => {
     if (document.fullscreenElement) {
@@ -15,7 +16,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className='flex items-center justify-between col-span-11 px-12 border-b border-gray-900'>
+    <nav className={`${navClasses} items-center justify-between col-span-11 px-12 border-b border-gray-900`}>
       <div className='flex items-center w-full gap-x-2'>
         <span>
           <svg width='25' height='25' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'>
@@ -35,7 +36,7 @@ export default function Navbar() {
           placeholder='Search something in tokens, wallet, transactions...'
         />
       </div>
-      <div className='items-center hidden gap-x-4 lg:flex'>
+      <div className='flex items-center gap-x-4'>
         <div className='flex items-center p-2 pr-4 rounded-full cursor-pointer bg-slateTheme gap-x-4'>
           <img
             className='w-10 h-10 rounded-full'
