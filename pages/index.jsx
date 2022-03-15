@@ -1,3 +1,5 @@
+import Head from 'next/head';
+
 import SummaryAssets from '../components/Assets/SummaryAssets';
 import SummaryNfts from '../components/Nfts/SummaryNfts';
 
@@ -19,6 +21,9 @@ export default function Home() {
 
   return (
     <div className='flex flex-col h-full lg:flex-row'>
+      <Head>
+        <title>Dashboard</title>
+      </Head>
       <div className='flex flex-col w-full lg:w-4/6'>
         <div className='relative p-2 border-b border-r border-gray-900 h-3/5'>
           Charts
