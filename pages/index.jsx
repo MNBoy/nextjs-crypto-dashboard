@@ -1,9 +1,10 @@
 import Head from 'next/head';
 
 import SummaryAssets from '../components/Assets/SummaryAssets';
+import SummaryCoins from '../components/Coins/SummaryCoins';
 import SummaryNfts from '../components/Nfts/SummaryNfts';
 
-export default function Home() {
+export default function Home({ coinsData }) {
   const inComing = {
     price: '32,800',
     percent: '+06.96 %',
@@ -39,7 +40,9 @@ export default function Home() {
             </span>
           </div>
         </div>
-        <div className='p-2 border-b border-r border-gray-900 lg:border-b-0 h-2/5'>Coins</div>
+        <div className='p-2 border-b border-r border-gray-900 lg:border-b-0 h-2/5'>
+          <SummaryCoins coinsData={coinsData} />
+        </div>
       </div>
       <div className='flex flex-col w-full lg:w-2/6'>
         <div className='p-2 border-b border-gray-900 h-2/5'>
@@ -52,3 +55,17 @@ export default function Home() {
     </div>
   );
 }
+
+export const getServerSideProps = async () => {
+  const res = await fetch(
+    'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false'
+  );
+
+  const coinsData = await res.json();
+
+  return {
+    props: {
+      coinsData,
+    },
+  };
+};

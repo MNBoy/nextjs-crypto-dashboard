@@ -5,27 +5,27 @@ const SummaryNfts = (props) => {
   const nfts = [
     {
       id: 1,
-      name: 'Hand of mind',
+      name: 'Mafia man',
       number: '001',
       price: 2.3,
       image:
-        'https://images.unsplash.com/photo-1636975262325-a0c611796b4a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80',
+        'https://lh3.googleusercontent.com/EQBkTH5h6KI-5q-UoxCNQFv2Qfd0SKS3FcoDe2nycWQHWHPw4fBYOhMNU7egiU4IJOiqYLbB62pwler_hEnusM4lGjTzGnqi9ywggA=s0',
     },
     {
       id: 2,
-      name: 'Astronaut man',
+      name: 'Moody Boy',
       number: '003',
       price: 1.2,
       image:
-        'https://images.unsplash.com/photo-1632536590701-14290ca3874b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDR8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=60',
+        'https://lh3.googleusercontent.com/hoxvjYklmGhiDD-l8g6LhNwj7IsMz5PO2eemOzUbWPk6TJQLNr7qQGZw9BaKpOvJSzI1hqk9VcfZT60tF6rfhn4HQe-faQMDmkTB=s0',
     },
     {
       id: 3,
-      name: 'Something else',
+      name: 'Gang Boy',
       number: '095',
       price: 0.05,
       image:
-        'https://images.unsplash.com/photo-1638871735143-4d16a2f15ddc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDl8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=60',
+        'https://lh3.googleusercontent.com/MxnwmGVGIvBlB15P40iJrBiowbgvgVAvP3WDDu7h6g-HNXVHaMdNYNsDnxbVExP9f7vf125_pyYBVZW5WNuNIu5y_YyxB9HmOBo0j_Q=s0',
     },
   ];
 
@@ -36,7 +36,7 @@ const SummaryNfts = (props) => {
           <span className='font-medium'>NFT Collections</span>
           <span className='text-xs font-light text-gray-500'>Creator | Artist</span>
         </div>
-        <div className='flex items-center w-auto px-3 lg:px-6 py-2 lg:py-2 border-[.1px] border-gray-600 rounded-full cursor-pointer justify-evenly bg-slateTheme gap-x-2'>
+        <div className='flex items-center w-auto px-3 lg:px-6 py-2 pr-2 lg:py-2 border-[.1px] border-gray-600 rounded-full cursor-pointer justify-evenly bg-slateTheme gap-x-2'>
           <span className='text-sm'>EtherNose</span>
           <span>
             <svg width='15' height='15' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
