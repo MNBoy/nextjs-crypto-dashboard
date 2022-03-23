@@ -1,37 +1,44 @@
 /* eslint-disable @next/next/no-img-element */
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
+
+import LineChart from '../UI/LineChart';
 
 const SummaryCoins = ({ coinsData }) => {
   const [coins, setCoins] = useState(coinsData);
   const [perPage, setPerPage] = useState(10);
   const [isLoading, setIsLoading] = useState(false);
 
-  const UPDATE_PER_SECONDES = 5000;
+  const UPDATE_PER_SECONDES = 60000; // 60 seconds
 
   const addPerPage = () => {
     setIsLoading(true);
     setPerPage(perPage + 10);
+    getCoins();
   };
 
   const numberSplitter = (number) => {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
 
+  const getCoins = useCallback(async () => {
+    const res = await fetch(
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=${perPage}&page=1&sparkline=false`
+    );
+    const data = await res.json();
+    setCoins(data);
+    setIsLoading(false);
+  }, [perPage]);
+
   useEffect(() => {
     const interval = setInterval(async () => {
       if (document.visibilityState === 'visible') {
-        const res = await fetch(
-          `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=${perPage}&page=1&sparkline=false`
-        );
-        const data = await res.json();
-        setCoins(data);
-        setIsLoading(false);
+        await getCoins();
       }
     }, UPDATE_PER_SECONDES);
     return () => {
       clearInterval(interval);
     };
-  }, [perPage]);
+  }, [getCoins, perPage]);
 
   return (
     <div className='flex flex-col w-full h-full px-3 py-2 overflow-y-scroll gap-y-3 lg:gap-y-4 lg:p-8'>
@@ -53,7 +60,13 @@ const SummaryCoins = ({ coinsData }) => {
                 {numberSplitter(coin.ath)} {coin.symbol.toUpperCase()}
               </span>
             </div>
-            <div className='items-center justify-center hidden sm:flex'>Chart</div>
+            <div className='items-center justify-center hidden sm:flex'>
+              <LineChart
+                height={50}
+                color={coin.price_change_percentage_24h > 0 ? '#22C55E' : '#EF4444'}
+                coin={coin.id}
+              />
+            </div>
             <div className='flex flex-col items-end w-32 lg:w-auto'>
               <span className='text-xs text-gray-500 lg:text-sm'>
                 <strong className='text-sm font-medium text-white lg:text-lg'>
