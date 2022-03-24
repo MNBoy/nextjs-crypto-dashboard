@@ -24,3 +24,9 @@ body {
   background-color: #51535d;
   border-radius: 10px;
 }
+
+/* Candle Chart */
+.apexcharts-menu.apexcharts-menu-open {
+  background-color: #000000cb;
+  border: 0.1px solid gray;
+}

@@ -44,7 +44,11 @@ export default function Navbar(props) {
             alt='avatar'
           />
           <div className='flex flex-col w-40'>
-            <span className='text-sm'>User Name</span>
+            <span className='text-sm'>
+              <a className='hover:underline' href='https://github.com/MNBoy' target='_blank' rel='noopener noreferrer'>
+                Moein Salari
+              </a>
+            </span>
             <span className='text-[10px]'>Transaction Manager</span>
           </div>
           <span>

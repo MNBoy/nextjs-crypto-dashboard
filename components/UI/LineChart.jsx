@@ -10,7 +10,7 @@ const LineChart = ({ height, color, coin }) => {
   useEffect(() => {
     const fetchData = async () => {
       const chartRes = await fetch(
-        `https://api.coingecko.com/api/v3/coins/${coin}/market_chart?vs_currency=usd&days=1&interval=seconds`
+        `https://api.coingecko.com/api/v3/coins/${coin}/market_chart?vs_currency=usd&days=1`
       );
       if (chartRes.ok) {
         const chartData = await chartRes.json();

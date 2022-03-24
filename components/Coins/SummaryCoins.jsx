@@ -3,7 +3,7 @@ import { useEffect, useState, useCallback } from 'react';
 
 import LineChart from '../UI/LineChart';
 
-const SummaryCoins = ({ coinsData }) => {
+const SummaryCoins = ({ coinsData, changeSymbol }) => {
   const [coins, setCoins] = useState(coinsData);
   const [perPage, setPerPage] = useState(10);
   const [isLoading, setIsLoading] = useState(false);
@@ -14,6 +14,10 @@ const SummaryCoins = ({ coinsData }) => {
     setIsLoading(true);
     setPerPage(perPage + 10);
     getCoins();
+  };
+
+  const setSymbol = (coin) => {
+    changeSymbol(coin);
   };
 
   const numberSplitter = (number) => {
@@ -44,7 +48,11 @@ const SummaryCoins = ({ coinsData }) => {
     <div className='flex flex-col w-full h-full px-3 py-2 overflow-y-scroll gap-y-3 lg:gap-y-4 lg:p-8'>
       {coins.map((coin) => {
         return (
-          <div className='flex items-center justify-between lg:grid lg:grid-cols-4 gap-x-3' key={coin.id}>
+          <div
+            className='flex items-center justify-between p-2 rounded-md cursor-pointer lg:grid lg:grid-cols-4 gap-x-3 hover:bg-gray-900'
+            key={coin.id}
+            onClick={setSymbol.bind(this, coin)}
+          >
             <div className='flex items-center gap-x-3'>
               <div className='flex items-center justify-center rounded-full w-11 h-11'>
                 <img src={coin.image} alt={coin.name} />
