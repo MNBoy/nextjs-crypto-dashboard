@@ -5582,7 +5582,7 @@
   "resolved" "https://registry.npmjs.org/react-refresh/-/react-refresh-0.4.3.tgz"
   "version" "0.4.3"
 
-"react-spring@^9.2.0":
+"react-spring@^9.2.0", "react-spring@^9.4.4":
   "integrity" "sha512-VOqilh9DJBsS6Pf550YLhdReS3j9a2AQVh7NcsNtWoxTYIeuErWi6ym0++6bBhQp4yT5xvVvUDaJ8ez8vrFgaw=="
   "resolved" "https://registry.npmjs.org/react-spring/-/react-spring-9.4.4.tgz"
   "version" "9.4.4"
