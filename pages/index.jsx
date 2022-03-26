@@ -22,27 +22,47 @@ export default function Home({ coinsData }) {
     const nowUnixTime = moment().unix();
     const beforeUnixTime = moment().subtract(1, 'days').unix();
     const seconds = 900; // 300, 900, 1800, 7200, 14400, 86400
-    const chartRes = await fetch(
-      `https://poloniex.com/public?command=returnChartData&currencyPair=USDT_${symbol}&start=${beforeUnixTime}&end=${nowUnixTime}&period=${seconds}`
-    );
-    const chartData = await chartRes.json();
-    if (!chartData.error) {
-      const mappedData = await chartData.map((item) => {
-        const date = new Date(item.date);
-        return {
-          x: moment(date).format(),
-          y: [item.open, item.high, item.low, item.close],
-        };
-      });
+    let chartData = [];
+    try {
+      const chartRes = await fetch(
+        `https://poloniex.com/public?command=returnChartData&currencyPair=USDT_${symbol}&start=${beforeUnixTime}&end=${nowUnixTime}&period=${seconds}`
+      );
+      chartData = await chartRes.json();
+      if (!chartData.error) {
+        const mappedData = await chartData.map((item) => {
+          const date = new Date(item.date);
+          return {
+            x: moment(date).format(),
+            y: [item.open, item.high, item.low, item.close],
+          };
+        });
 
-      setCandleChartData({
-        coin: clickedCoin,
-        data: mappedData,
-      });
-    } else {
+        setCandleChartData({
+          coin: clickedCoin,
+          data: mappedData,
+        });
+      } else {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-center',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+          },
+        });
+
+        Toast.fire({
+          icon: 'error',
+          title: 'Please select a different coin!',
+        });
+      }
+    } catch (error) {
       const Toast = Swal.mixin({
         toast: true,
-        position: 'top-center',
+        position: 'center',
         showConfirmButton: false,
         timer: 3000,
         timerProgressBar: true,
@@ -54,7 +74,7 @@ export default function Home({ coinsData }) {
 
       Toast.fire({
         icon: 'error',
-        title: 'Please select a different coin!',
+        title: 'To get the chart data, please change your ip address!',
       });
     }
   }, [symbol, clickedCoin]);
