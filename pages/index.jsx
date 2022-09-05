@@ -24,19 +24,25 @@ export default function Home({ coinsData }) {
     const seconds = 900; // 300, 900, 1800, 7200, 14400, 86400
     let chartData = [];
     try {
-      const chartRes = await fetch(
+      const url = encodeURIComponent(
         `https://poloniex.com/public?command=returnChartData&currencyPair=USDT_${symbol}&start=${beforeUnixTime}&end=${nowUnixTime}&period=${seconds}`
       );
-      chartData = await chartRes.json();
-      if (!chartData.error) {
+      const chartRes = await fetch(`https://api.scrapingant.com/v1/general?url=${url}&browser=false`, {
+        headers: {
+          'x-api-key': '5cc3e788775a491588e6fd9ff8a50216',
+          'content-type': 'application/json',
+        },
+      });
+      const responseData = await chartRes.json();
+      chartData = await JSON.parse(responseData.content);
+      if (responseData.status_code === 200) {
         const mappedData = await chartData.map((item) => {
-          const date = new Date(item.date);
+          const date = new Date(+item.date);
           return {
             x: moment(date).format(),
             y: [item.open, item.high, item.low, item.close],
           };
         });
-
         setCandleChartData({
           coin: clickedCoin,
           data: mappedData,
@@ -74,10 +80,10 @@ export default function Home({ coinsData }) {
 
       Toast.fire({
         icon: 'error',
-        title: 'To get the chart data, please change your ip address!',
+        title: error.message,
       });
     }
-  }, [symbol, clickedCoin]);
+  }, [clickedCoin]);
 
   useEffect(() => {
     getChartData();
