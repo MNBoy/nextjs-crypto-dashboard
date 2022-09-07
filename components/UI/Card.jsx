@@ -1,8 +1,16 @@
-/* eslint-disable @next/next/no-img-element */
+import Image from 'next/image';
+
 const Card = (props) => {
   return (
     <div className='relative flex items-center justify-center w-56 overflow-hidden rounded-2xl shrink-0'>
-      <img className='object-cover w-full h-full' draggable='false' src={props.image} alt={props.name} />
+      <Image
+        className='object-cover w-full h-full'
+        draggable='false'
+        src={props.image}
+        alt={props.name}
+        layout='fill'
+        loading='lazy'
+      />
       <div className='absolute bottom-0 left-0 flex justify-between w-full h-12 px-4 py-2 backdrop-blur'>
         <div className='flex flex-col justify-center'>
           <span className='text-xs opacity-50'>#{props.number}</span>

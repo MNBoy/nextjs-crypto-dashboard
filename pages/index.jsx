@@ -83,7 +83,7 @@ export default function Home({ coinsData }) {
         title: error.message,
       });
     }
-  }, [clickedCoin]);
+  }, [clickedCoin, symbol]);
 
   useEffect(() => {
     getChartData();
