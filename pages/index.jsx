@@ -133,7 +133,9 @@ export default function Home({ coinsData }) {
                   </span>
                 </div>
                 <div className='flex items-center space-x-1'>
-                  <span className='text-xl font-medium '>{numberSplitter(candleChartData.coin.current_price)}</span>
+                  <span className='text-xl font-medium '>
+                    {numberSplitter(candleChartData.coin.current_price.toFixed(2))}
+                  </span>
                   <span>USD</span>
                   <span
                     className={`ml-1 text-xs ${
@@ -141,7 +143,7 @@ export default function Home({ coinsData }) {
                     }`}
                   >
                     {candleChartData.coin.price_change_percentage_24h > 0 && '+'}
-                    {candleChartData.coin.price_change_percentage_24h}
+                    {candleChartData.coin.price_change_percentage_24h.toFixed(2)}
                   </span>
                 </div>
               </div>
