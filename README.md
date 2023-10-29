@@ -1,11 +1,8 @@
 # Nuxt Movie App
 
 ### See Demo
-See [Crypto dashboard](https://crypto-dashboard-nextjs.vercel.app/).
+See [Best Tether](https://best-tether.vercel.app/).
 ***
-# Images
-![Home](https://i.ibb.co/KK0gWs1/Screenshot-2022-03-27-003147.png)
-
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
